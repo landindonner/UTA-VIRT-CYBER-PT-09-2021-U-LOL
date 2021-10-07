@@ -66,26 +66,33 @@
 
 ### Step 4: Lynis Auditing
 
-1. Command to install Lynis:
+1. Command to install Lynis: sudo apt-get install lynis
 
-2. Command to see documentation and instructions:
+2. Command to see documentation and instructions: lynis show help OR man lynis
 
-3. Command to run an audit:
+3. Command to run an audit: lynis audit system
 
 4. Provide a report from the Lynis output on what can be done to harden the system.
 
     - Screenshot of report output:
 
+![LynisScreenshot](https://user-images.githubusercontent.com/88755175/136399813-1b73b822-86a0-4f9b-b2d2-9c158142011f.PNG)
+
+
+
 
 ### Bonus
-1. Command to install chkrootkit:
+1. Command to install chkrootkit: sudo apt-get install chkrootkit
 
-2. Command to see documentation and instructions:
+2. Command to see documentation and instructions: man chkrootkit OR sudo chkrootkit -h
 
-3. Command to run expert mode:
+3. Command to run expert mode: sudo chkrootkit -x
 
 4. Provide a report from the chrootkit output on what can be done to harden the system.
     - Screenshot of end of sample output:
+    
+![ChkrootkitScreenshot](https://user-images.githubusercontent.com/88755175/136399649-8c0e3376-f1a1-43ab-bf2d-2688a8e28ded.PNG)
+
 
 ---
 © 2020 Trilogy Education Services, a 2U, Inc. brand. All Rights Reserved.
