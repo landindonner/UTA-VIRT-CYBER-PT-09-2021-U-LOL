@@ -9,44 +9,60 @@ Save and submit the completed file for your homework submission.
 ### Step 1: Create, Extract, Compress, and Manage tar Backup Archives
 
 1. Command to **extract** the `TarDocs.tar` archive to the current directory:
+    tar xvvf TarDocs.tar -C ../Projects/
 
 2. Command to **create** the `Javaless_Doc.tar` archive from the `TarDocs/` directory, while excluding the `TarDocs/Documents/Java` directory:
+    tar cvWf Javaless_Docs.tar --exclude='*Java*' ./TarDocs/
 
 3. Command to ensure `Java/` is not in the new `Javaless_Docs.tar` archive:
+    tar tvvf Javaless_Docs.tar | grep Java
 
 **Bonus** 
 - Command to create an incremental archive called `logs_backup_tar.gz` with only changed files to `snapshot.file` for the `/var/log` directory:
+    sudo tar cvvWf logs_backup_tar.gz --listed-incremental=snapshot.file --level=0 /var/log
 
 #### Critical Analysis Question
 
 - Why wouldn't you use the options `-x` and `-c` at the same time with `tar`?
+    Because -c is for creating a new archive. -x is for extracting an existing archive. You wouldnt want to -c create an archive that already exists or extract an archive 
+    that hast been created yet. 
 
 ---
 
 ### Step 2: Create, Manage, and Automate Cron Jobs
 
 1. Cron job for backing up the `/var/log/auth.log` file:
-
+0 6 * * 3 tar -czf /auth_backup.tgz /var/log/auth.log
 ---
 
 ### Step 3: Write Basic Bash Scripts
 
-1. Brace expansion command to create the four subdirectories:
+1. Brace expansion command to create the four subdirectories: mkdir -p backups/{freemen,diskuse,openlist,freedisk}
 
 2. Paste your `system.sh` script edits below:
 
     ```bash
     #!/bin/bash
-    [Your solution script contents here]
+    free -h > ~/backups/freemem/free_mem.txt
+    du -h > ~/backups/diskuse/diskusage.txt
+    lsof > ~/backups/openlist/open_list.txt
+    df -h > ~/backups/freedisk/free_disk.txt
     ```
 
 3. Command to make the `system.sh` script executable:
+    chmod +x system.sh
 
 **Optional**
 - Commands to test the script and confirm its execution:
+ sudo sh system.sh
+ cat ~/backups/freemem/free_mem.txt
+ cat ~/backups/diskuse/disk_usage.txt
+ cat ~/backups/openlist/open_list.txt
+ cat ~/backups/freedisk/free_disk.txt
 
 **Bonus**
-- Command to copy `system` to system-wide cron directory:
+- Command to copy `system` to system-wide cron directory: 
+  sudo cp system.sh /etc/cron.weekly/
 
 ---
 
